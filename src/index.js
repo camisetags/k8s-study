@@ -1,4 +1,5 @@
 const Fastify = require('fastify');
+const PokemonHandlers = require('./pokemon/handlers');
 
 const fastify = Fastify({
   logger: true,
@@ -6,11 +7,13 @@ const fastify = Fastify({
 
 const PORT = process.env.PORT || 4000;
 
-fastify.get('/', async function(req, res) {
+fastify.get('/', async function() {
   return {
     message: 'Hello Kubernetes!',
   };
 });
+
+fastify.register(PokemonHandlers, { prefix: '/pokemons' });
 
 fastify.listen(PORT, '0.0.0.0', function(err, address) {
   if (err) {
