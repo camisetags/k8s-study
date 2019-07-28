@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: app-example-for-k8s
+  name: app-k8s-study
 spec:
   containers:
-    - name: container-example-for-k8s
+    - name: container-k8s-study
       image: camiseta22/example-for-k8s:latest
       ports:
         - containerPort: 4000

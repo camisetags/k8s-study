@@ -1,1 +1,1 @@
-# example-for-k8s
+# k8s-study
