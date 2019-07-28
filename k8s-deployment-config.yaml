@@ -1,0 +1,18 @@
+apiVersion: apps/v1beta1
+
+kind: Deployment
+
+metadata:
+  name: example-k8s-deployment
+
+spec:
+  template: # mesma configuração dentro do k8s-pod-config.yaml
+    metadata:
+      labels:
+        name: app-example-for-k8s
+    spec:
+      containers:
+        - name: container-example-for-k8s
+          image: camiseta22/example-for-k8s:latest
+          ports:
+            - containerPort: 4000
