@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: aplicacao-example-for-k8s
+  name: app-example-for-k8s
 spec:
   containers:
     - name: container-example-for-k8s
