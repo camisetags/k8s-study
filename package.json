@@ -1,5 +1,5 @@
 {
-  "name": "example-for-k8s",
+  "name": "k8s-study",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,6 +10,8 @@
   "author": "Gabriel Camiseta <salesseixasgabriel@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "fastify": "^2.7.0"
+    "fastify": "^2.7.0",
+    "knex": "^0.19.1",
+    "objection": "^1.6.9"
   }
 }

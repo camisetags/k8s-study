@@ -6,3 +6,17 @@ services:
     build: .
     ports:
       - '4000:4000'
+
+  database:
+    container_name: k8s_database
+    image: postgres:10.4
+    environment:
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'postgres'
+      POSTGRES_DB: 'k8s-database'
+      PGDATA: '/var/lib/postgresql/data'
+      PGCLIENTENCODING: 'UTF8'
+    volumes:
+      - ./psql_data:/var/lib/postgresql/data
+    ports:
+      - 54322:5432
