@@ -4,10 +4,10 @@ const Knex = require('knex');
 module.exports = Knex({
   client: 'pg',
   connection: {
-    host: process.env.PG_HOST || 'localhost',
-    user: process.env.PG_USER || 'postgres',
-    port: process.env.PG_PORT || 54322,
-    password: process.env.PG_PASSWORD || 'postgres',
-    database: process.env.PG_DATABASE || 'example-of-k8s',
+    user: process.env.POSTGRES_USER || 'postgres',
+    password: process.env.POSTGRES_PASSWORD || 'postgres',
+    host: process.env.POSTGRES_HOST || 'k8s_database',
+    database: process.env.POSTGRES_DB || 'k8s-database',
+    port: process.env.POSTGRES_PORT || 54322,
   },
 });

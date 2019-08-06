@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 4000;
 
 fastify.get('/', async function() {
   return {
-    message: 'Hello Kubernetes!',
+    message: 'Hello Docker!',
   };
 });
 

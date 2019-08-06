@@ -11,5 +11,5 @@
 ### Rodando Container
 
 ```
-  $ docker run -p 4000:80 camiseta-app
+  $ docker run -p 4000:4000 camiseta-app
 ```

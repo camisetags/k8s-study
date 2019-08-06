@@ -12,6 +12,7 @@
   "dependencies": {
     "fastify": "^2.7.0",
     "knex": "^0.19.1",
-    "objection": "^1.6.9"
+    "objection": "^1.6.9",
+    "pg": "^7.12.0"
   }
 }

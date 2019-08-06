@@ -1,4 +1,5 @@
 .DS_Store
+psql_data/
 
 # Logs
 logs
