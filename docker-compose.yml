@@ -23,7 +23,7 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_HOST: k8s_database
       POSTGRES_DB: k8s-database
-      POSTGRES_PORT: 54322
+      POSTGRES_PORT: 5432
     ports:
       - 4000:4000
     depends_on:

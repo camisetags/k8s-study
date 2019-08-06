@@ -21,7 +21,7 @@ Model.knex(Knex);
 // Pokemon model.
 class Pokemon extends Model {
   static get tableName() {
-    return 'contacts';
+    return 'pokemons';
   }
 
   static get idColumn() {
