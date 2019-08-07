@@ -19,17 +19,20 @@ services:
     container_name: redis
     image: redis
     ports:
-      - 6379:6379
+      - 63799:6379
 
   app:
-    # image: camiseta22/example-for-k8s
-    build: .
+    image: camiseta-app
+    # build: .
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_HOST: k8s_database
       POSTGRES_DB: k8s-database
       POSTGRES_PORT: 5432
+
+      REDIS_PORT: 6379
+
     ports:
       - 4000:4000
     depends_on:

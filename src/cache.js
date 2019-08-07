@@ -13,4 +13,4 @@ module.exports = new Objelion({
   cacheKeyRule: (fnName, args) => {
     return `${fnName}-${args}`;
   },
-});
+}).createCacheMiddleware();
