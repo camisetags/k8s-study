@@ -1,4 +1,5 @@
 const { Pokemon } = require('./models');
+const cacheMiddleware = require('../cache');
 
 class PokemonService {
   list({ page, pageSize = 10 }) {
@@ -18,4 +19,4 @@ class PokemonService {
   }
 }
 
-module.exports = new PokemonService();
+module.exports = cacheMiddleware(new PokemonService());

@@ -11,8 +11,10 @@
   "license": "ISC",
   "dependencies": {
     "fastify": "^2.7.0",
+    "ioredis": "^4.14.0",
     "knex": "^0.19.1",
     "objection": "^1.6.9",
+    "objelion": "^0.4.5",
     "pg": "^7.12.0"
   }
 }

@@ -15,6 +15,12 @@ services:
     ports:
       - 54322:5432
 
+  redis:
+    container_name: redis
+    image: redis
+    ports:
+      - 6379:6379
+
   app:
     # image: camiseta22/example-for-k8s
     build: .
