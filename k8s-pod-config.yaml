@@ -5,6 +5,6 @@ metadata:
 spec:
   containers:
     - name: container-k8s-study
-      image: camiseta22/example-for-k8s:latest
+      image: camiseta22/k8s-study:release-0.0.2
       ports:
         - containerPort: 4000

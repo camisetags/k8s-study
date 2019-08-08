@@ -22,7 +22,7 @@ services:
       - 63799:6379
 
   app:
-    image: camiseta-app
+    image: camiseta22/k8s-study:release-0.0.2
     # build: .
     environment:
       POSTGRES_USER: postgres
@@ -32,8 +32,32 @@ services:
       POSTGRES_PORT: 5432
 
       REDIS_PORT: 6379
+      REDIS_HOST: redis
 
     ports:
       - 4000:4000
     depends_on:
       - database
+
+  develop:
+    image: node:12.7.0-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_HOST: k8s_database
+      POSTGRES_DB: k8s-database
+      POSTGRES_PORT: 5432
+
+      REDIS_PORT: 6379
+      REDIS_HOST: redis
+
+    ports:
+      - 5000:4000
+    depends_on:
+      - database
+    # USE THIS OPTIONS WHEN WORKING ON DEV MODE
+    restart: always
+    tty: true
+    volumes:
+      - ./:/app/
+    working_dir: /app
