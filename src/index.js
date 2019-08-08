@@ -11,7 +11,7 @@ const fastify = Fastify({
 
 fastify.get('/', async function() {
   return {
-    message: 'Hello Docker!',
+    message: 'Hello Kubernetes!',
   };
 });
 
