@@ -1,18 +1,20 @@
-apiVersion: apps/v1beta1
-
+apiVersion: apps/v1
 kind: Deployment
-
 metadata:
   name: k8s-study-deployment
 
 spec:
-  template: # mesma configuração dentro do k8s-pod-config.yaml
+  # minReadySeconds: 30
+  selector:
+    matchLabels:
+      app: k8s-study-app
+
+  replicas: 2
+  template: # template for the pods
     metadata:
       labels:
-        name: app-k8s-study
+        app: k8s-study-app
     spec:
       containers:
-        - name: container-k8s-study
-          image: camiseta22/example-for-k8s:latest
-          ports:
-            - containerPort: 4000
+        - name: k8s-study-app
+          image: camiseta22/k8s-study:release-0.0.2
