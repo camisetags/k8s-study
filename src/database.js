@@ -6,7 +6,7 @@ module.exports = Knex({
   connection: {
     user: process.env.POSTGRES_USER || 'postgres',
     password: process.env.POSTGRES_PASSWORD || 'postgres',
-    host: process.env.POSTGRES_HOST || 'k8s_database',
+    host: process.env.POSTGRES_HOST || 'localhost',
     database: process.env.POSTGRES_DB || 'k8s-database',
     port: process.env.POSTGRES_PORT || 54322,
   },

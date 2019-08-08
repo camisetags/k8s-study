@@ -1,11 +1,13 @@
 const Fastify = require('fastify');
 const PokemonHandlers = require('./pokemon/handlers');
 
-const fastify = Fastify({
-  logger: true,
-});
-
 const PORT = process.env.PORT || 4000;
+
+const fastify = Fastify({
+  logger: {
+    prettyPrint: true,
+  },
+});
 
 fastify.get('/', async function() {
   return {

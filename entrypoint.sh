@@ -12,7 +12,7 @@ done
 if [[ -z `psql -Atqc "\\list $POSTGRES_DB"` ]]; then
   echo "Database $POSTGRES_DB does not exist. Creating..."
   createdb -E UTF8 $POSTGRES_DB -l en_US.UTF-8 -T template0
-  yarn migrate
+  # yarn migrate
   echo "Database $POSTGRES_DB created."
 fi
 
