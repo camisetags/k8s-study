@@ -1,0 +1,65 @@
+apiVersion: apps/v1beta1
+kind: StatefulSet
+
+metadata:
+  name: statefulset-postgres
+
+spec:
+  serviceName: postgres-database-service
+  template:
+    metadata:
+      labels:
+        name: k8s-postgres-database
+    spec:
+      containers:
+        - name: k8s-postgres-container
+          image: postgres:10.4
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_USER
+              value: postgres
+            - name: POSTGRES_PASSWORD
+              value: postgres
+            - name: POSTGRES_DB
+              value: k8s-database
+            - name: PGDATA
+              value: /var/lib/postgresql/data
+            - name: PGCLIENTENCODING
+              value: UTF8
+
+          volumeMounts:
+            - name: postgres-volume
+              mountPath: /var/lib/postgresql/data
+
+      volumes:
+        - name: postgres-volume
+          persistentVolumeClaim:
+            claimName: postgres-persistent-claim-config
+
+---
+apiVersion: v1
+
+kind: PersistentVolumeClaim
+
+metadata:
+  name: postgres-persistent-claim-config
+
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 8Gi
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-database-service
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 5432
+  selector:
+    name: k8s-postgres-database

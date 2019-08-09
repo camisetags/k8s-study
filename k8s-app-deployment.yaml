@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-study-deployment
+
+spec:
+  # minReadySeconds: 30
+  selector:
+    matchLabels:
+      app: k8s-study-app
+
+  replicas: 4
+  template: # template for the pods
+    metadata:
+      labels:
+        app: k8s-study-app
+    spec:
+      containers:
+        - name: k8s-study-app
+          image: camiseta22/k8s-study:release-0.0.2
+          env:
+            - name: POSTGRES_HOST
+              value: postgres-database-service
+
+            - name: POSTGRES_USER
+              value: postgres
+
+            - name: POSTGRES_PASSWORD
+              value: postgres
+
+            - name: POSTGRES_DB
+              value: k8s-database
+
+            - name: POSTGRES_PORT
+              value: '5432'
+
+            - name: REDIS_PORT
+              value: '6379'
+
+            - name: REDIS_HOST
+              value: redis-service
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: k8s-study-service
+
+spec:
+  type: LoadBalancer
+  # This defines which pods are going to be represented by this Service
+  # The service becomes a network endpoint for either other services
+  # or maybe external users to connect to (eg browser)
+  selector:
+    app: k8s-study-app
+
+  ports:
+    - name: http
+      port: 4000
+      nodePort: 32000
