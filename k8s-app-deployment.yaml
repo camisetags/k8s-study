@@ -47,6 +47,7 @@ metadata:
 
 spec:
   type: LoadBalancer
+  # type: NodePort will make service private from outside network
   # This defines which pods are going to be represented by this Service
   # The service becomes a network endpoint for either other services
   # or maybe external users to connect to (eg browser)
