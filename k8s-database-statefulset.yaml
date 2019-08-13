@@ -6,6 +6,11 @@ metadata:
 
 spec:
   serviceName: postgres-database-service
+
+  selector:
+    matchLabels:
+      name: k8s-postgres-database
+
   template:
     metadata:
       labels:
